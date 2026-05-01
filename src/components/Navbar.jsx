@@ -31,22 +31,22 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0 flex items-center">
             <a href="#home" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-600 dark:from-accent dark:to-purple-400">
-              Arpit.
+              Arpit Kanani
             </a>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
+              <a
+                key={link.name}
                 href={link.href}
                 className="text-gray-700 dark:text-gray-300 hover:text-accent dark:hover:text-accent-hover transition-colors text-sm font-medium"
               >
                 {link.name}
               </a>
             ))}
-            
-            <button 
+
+            <button
               onClick={toggleDarkMode}
               className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle dark mode"
@@ -56,7 +56,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           </div>
 
           <div className="md:hidden flex items-center">
-            <button 
+            <button
               onClick={toggleDarkMode}
               className="p-2 mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
             >
