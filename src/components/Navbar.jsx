@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { FiMenu, FiX, FiMoon, FiSun } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,64 +8,70 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Selected Work', href: '#projects' },
+    { name: 'Journey', href: '#experience' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-effect py-4' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-paper/90 dark:bg-paper-dark/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex justify-between items-center">
-          <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-600 dark:from-accent dark:to-purple-400">
-              Arpit Kanani
+          <div className="flex-shrink-0">
+            <a href="#home" className="text-2xl font-serif font-bold tracking-tight hover-target">
+              Arpit
             </a>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-accent dark:hover:text-accent-hover transition-colors text-sm font-medium"
+                className="text-xs font-sans font-medium uppercase tracking-[0.2em] relative group hover-target"
               >
                 {link.name}
+                <span className="absolute -bottom-2 left-0 w-0 h-px bg-current transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
 
+            <a 
+              href="/Arpit_Kanani_Resume.pdf" 
+              download 
+              className="text-xs font-sans font-bold uppercase tracking-[0.2em] px-5 py-2.5 bg-ink text-paper dark:bg-paper dark:text-ink hover-target transition-transform hover:scale-105 border border-transparent dark:border-white/10"
+            >
+              Resume
+            </a>
+
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+              className="hover-target p-2 transition-transform hover:scale-110"
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <FiSun size={20} className="text-yellow-400" /> : <FiMoon size={20} className="text-gray-700" />}
+              {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
             </button>
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
-            >
-              {darkMode ? <FiSun size={20} className="text-yellow-400" /> : <FiMoon size={20} className="text-gray-700" />}
+          <div className="md:hidden flex items-center gap-4">
+            <button onClick={toggleDarkMode} className="hover-target" aria-label="Toggle dark mode">
+              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-accent focus:outline-none"
+              className="hover-target focus:outline-none z-50 relative"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -73,23 +80,38 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden glass-effect absolute top-full left-0 w-full">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 w-full bg-paper dark:bg-paper-dark border-t border-black/10 dark:border-white/10 overflow-hidden"
+          >
+            <div className="flex flex-col px-6 py-8 space-y-6">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-4xl font-serif"
+                >
+                  {link.name}
+                </a>
+              ))}
               <a
-                key={link.name}
-                href={link.href}
+                href="/Arpit_Kanani_Resume.pdf"
+                download
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-accent hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="text-4xl font-serif text-brand-accent mt-4"
               >
-                {link.name}
+                Download Resume
               </a>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 

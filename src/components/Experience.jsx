@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { FiBriefcase } from 'react-icons/fi';
 
 const Experience = () => {
   const experiences = [
@@ -9,7 +8,7 @@ const Experience = () => {
       company: 'Current Company',
       duration: '2022 - Present',
       description: 'Leading front-end development, architecting scalable solutions, and mentoring junior developers. Implementing complex user interfaces using React and modern CSS frameworks.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript']
+      technologies: ['React', 'Next.js', 'Tailwind', 'TypeScript']
     },
     {
       id: 2,
@@ -30,60 +29,62 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-10 md:py-16 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="mb-10 md:mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 font-sans text-gray-900 dark:text-white">Experience</h2>
-          <div className="h-1 w-20 bg-accent mx-auto rounded-full"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Over 4 years of professional work history.</p>
+          <h2 className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-brand-muted">The Journey</h2>
         </motion.div>
 
-        <div className="relative border-l-2 border-gray-200 dark:border-gray-800 ml-3 md:ml-0">
-          {experiences.map((exp, index) => (
-            <motion.div 
-              key={exp.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="mb-10 ml-8 md:ml-10 relative"
-            >
-              {/* Timeline dot */}
-              <div className="absolute -left-10 md:-left-12 mt-1.5 w-4 h-4 rounded-full bg-accent ring-4 ring-white dark:ring-primary-dark"></div>
-              
-              <div className="glass-effect p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1">
-                <div className="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-2">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.role}</h3>
-                    <p className="text-lg text-accent font-medium flex items-center gap-2">
-                      <FiBriefcase size={16} /> {exp.company}
-                    </p>
-                  </div>
-                  <span className="text-sm font-semibold px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full w-fit">
-                    {exp.duration}
-                  </span>
-                </div>
-                
-                <p className="text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
-                  {exp.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech) => (
-                    <span key={tech} className="text-xs font-medium px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-md border border-blue-100 dark:border-blue-800">
-                      {tech}
+        <div className="relative">
+          {/* Vertical line hidden on mobile, visible on md */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-black/10 dark:bg-white/10 -translate-x-1/2"></div>
+          
+          <div className="flex flex-col gap-20 md:gap-0">
+            {experiences.map((exp, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <motion.div 
+                  key={exp.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className={`relative flex flex-col md:flex-row items-center md:h-64 ${isEven ? 'md:flex-row-reverse' : ''}`}
+                >
+                  <div className={`w-full md:w-1/2 flex flex-col ${isEven ? 'md:items-start md:pl-20' : 'md:items-end md:pr-20 md:text-right'}`}>
+                    <span className="text-xs font-bold font-sans uppercase tracking-widest text-brand-muted mb-2">
+                      {exp.duration}
                     </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                    <h3 className="text-3xl md:text-4xl font-serif font-bold mb-2">
+                      {exp.role}
+                    </h3>
+                    <span className="text-xl italic font-serif text-brand-accent mb-6">
+                      {exp.company}
+                    </span>
+                    <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-sm">
+                      {exp.description}
+                    </p>
+                    <div className={`flex flex-wrap gap-2 ${isEven ? '' : 'md:justify-end'}`}>
+                      {exp.technologies.map(tech => (
+                        <span key={tech} className="text-xs font-medium border border-black/10 dark:border-white/10 px-3 py-1 rounded-full text-brand-muted">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Decorative Dot */}
+                  <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-brand-accent rounded-full ring-4 ring-bg-light dark:ring-bg-dark z-10"></div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

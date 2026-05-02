@@ -6,9 +6,9 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
-
+import InteractiveTerminal from './components/InteractiveTerminal';
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -23,14 +23,15 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative w-full overflow-hidden">
+      <InteractiveTerminal />
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <main>
+      <main className="w-full pt-20">
         <Hero />
         <About />
+        <Projects />
         <Experience />
         <Skills />
-        <Projects />
       </main>
       <Footer />
     </div>

@@ -1,76 +1,60 @@
 import { motion } from 'framer-motion';
-import { FiCode, FiSmartphone, FiBookOpen } from 'react-icons/fi';
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-secondary dark:bg-secondary-dark relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 font-sans text-gray-900 dark:text-white">About Me</h2>
-          <div className="h-1 w-20 bg-accent mx-auto rounded-full"></div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Bio Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">My Journey</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I am a passionate software engineer with a strong foundation in both front-end and back-end development. My educational background and 4+ years of professional experience have equipped me to build scalable, high-performance web and mobile applications.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I enjoy solving complex problems, working with modern technology stacks like React and Tailwind CSS, and delivering products that offer a clean, intuitive user experience. 
-            </p>
-            
-            <div className="grid grid-cols-2 gap-4 mt-8">
-               <div className="glass-effect p-4 rounded-xl flex items-center gap-3">
-                  <FiCode className="text-accent" />
-                  <span className="font-medium text-gray-800 dark:text-gray-200">Web Dev</span>
-               </div>
-               <div className="glass-effect p-4 rounded-xl flex items-center gap-3">
-                  <FiSmartphone className="text-accent" />
-                  <span className="font-medium text-gray-800 dark:text-gray-200">App Dev</span>
-               </div>
-            </div>
-          </motion.div>
-
-          {/* Education Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100 flex items-center gap-2">
-              <FiBookOpen className="text-accent" /> Education
-            </h3>
-            
-            <div className="space-y-6">
-              <div className="glass-effect p-6 rounded-2xl border-l-4 border-l-accent relative overflow-hidden group hover:-translate-y-1 transition-transform cursor-default">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                <span className="text-sm text-accent font-semibold tracking-wider">Master's Degree</span>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mt-1">MS in Computer Science</h4>
-                <p className="text-gray-600 dark:text-gray-400 mt-2 font-medium">Adelphi University</p>
+    <section id="about" className="py-10 md:py-16 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          
+          <div className="md:col-span-5 md:col-start-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-sm font-bold uppercase tracking-[0.2em] mb-8 text-brand-muted">The Story</h2>
+              
+              <div className="text-3xl md:text-5xl leading-tight font-serif text-ink dark:text-ink-dark mb-12">
+                <p className="drop-cap">
+                  I build scalable, high-performance digital products that offer a clean, intuitive user experience.
+                </p>
               </div>
+            </motion.div>
+          </div>
 
-              <div className="glass-effect p-6 rounded-2xl border-l-4 border-l-purple-500 relative overflow-hidden group hover:-translate-y-1 transition-transform cursor-default">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
-                <span className="text-sm text-purple-500 font-semibold tracking-wider">Bachelor's Degree</span>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mt-1">BE in Computer Engineering</h4>
-                <p className="text-gray-600 dark:text-gray-400 mt-2 font-medium">University Name</p>
+          <div className="md:col-span-4 md:col-start-8 mt-12 md:mt-32">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="editorial-line pb-6 mb-6">
+                <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                  With a strong foundation in both front-end and back-end development, backed by a Master's in Computer Science from Adelphi University and over 4 years of professional experience, I approach engineering as both an analytical science and a creative discipline.
+                </p>
+                <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                  I enjoy solving complex problems using modern technology stacks like React, Node.js, and elegant CSS frameworks, ensuring that the underlying architecture is as beautiful as the interface.
+                </p>
               </div>
-            </div>
-          </motion.div>
+              
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-muted mb-4">Background</h3>
+                <ul className="space-y-4">
+                  <li className="flex justify-between items-baseline">
+                    <span className="font-serif text-lg">MS, Computer Science</span>
+                    <span className="text-xs text-brand-muted">Adelphi Univ.</span>
+                  </li>
+                  <li className="flex justify-between items-baseline">
+                    <span className="font-serif text-lg">BE, Computer Engineering</span>
+                    <span className="text-xs text-brand-muted">GTU</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+          
         </div>
       </div>
     </section>

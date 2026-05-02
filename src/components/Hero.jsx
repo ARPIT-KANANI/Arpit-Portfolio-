@@ -1,84 +1,82 @@
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import profileImg from '../assets/ptfloimg.png';
 
 const Hero = () => {
+  const title = "Arpit";
+  const subtitle = "Kanani";
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    }
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 80, rotate: 5 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotate: 0,
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   return (
-    <section id="home" className="pt-32 pb-16 md:pt-48 md:pb-32 flex items-center min-h-screen relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob dark:bg-blue-600/20"></div>
-      <div className="absolute top-40 right-10 w-72 h-72 bg-purple-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 dark:bg-purple-600/20"></div>
-      <div className="absolute -bottom-8 left-40 w-72 h-72 bg-pink-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000 dark:bg-pink-600/20"></div>
+    <section id="home" className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto pt-20 pb-10 relative">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <div className="md:col-span-7 z-10">
+          <motion.h1
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-[80px] sm:text-[120px] lg:text-[160px] leading-[0.85] font-serif font-bold tracking-tighter mb-8 md:mb-12 flex flex-col"
+          >
+            <div className="flex overflow-hidden pb-4">
+              {title.split('').map((char, index) => (
+                <motion.span key={index} variants={letterVariants} className="inline-block">
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+            <div className="flex overflow-hidden pb-4 -mt-4">
+              {subtitle.split('').map((char, index) => (
+                <motion.span key={index} variants={letterVariants} className="inline-block italic font-normal text-brand-muted dark:text-gray-500">
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+          </motion.h1>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block group">
-              <span className="inline-block animate-wave">👋</span> Hello, welcome to my portfolio
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold font-sans tracking-tight mb-6">
-              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-600 dark:from-accent dark:to-purple-400">Arpit Kanani</span>
-            </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium mb-6">
-              Full Stack Developer 
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg leading-relaxed">
-              With over 4+ years of professional experience, I build clean, efficient, and dynamic web and mobile applications using modern technologies.
+            <p className="text-lg md:text-xl font-medium mb-8 max-w-sm">
+              Full Stack Developer crafting clean, efficient, and dynamic digital experiences.
             </p>
-            
-            <div className="flex flex-wrap gap-4 mb-10">
-              <a href="#projects" className="px-6 py-3 rounded-xl bg-accent text-white font-medium hover:bg-accent-hover transition-all flex items-center gap-2 shadow-lg shadow-accent/30 group">
-                View My Work <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="https://www.linkedin.com/in/arpitkanani0102/" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-xl glass-effect text-gray-900 dark:text-white font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center gap-2">
-                <FiLinkedin size={18} className="text-blue-600" /> Connect
-              </a>
-            </div>
-
-            <div className="flex items-center gap-6 text-gray-500 dark:text-gray-400">
-              <span className="text-sm font-medium uppercase tracking-wider">Find me on</span>
-              <div className="h-px bg-gray-300 dark:bg-gray-700 w-12"></div>
-              <div className="flex gap-4">
-                <a href="#" className="hover:text-accent transition-colors"><FiGithub size={22} /></a>
-                <a href="https://www.linkedin.com/in/arpitkanani0102/" className="hover:text-blue-600 transition-colors"><FiLinkedin size={22} /></a>
-                <a href="mailto:hello@example.com" className="hover:text-accent transition-colors"><FiMail size={22} /></a>
-              </div>
-            </div>
+            <a href="#projects" className="inline-flex items-center text-sm font-bold uppercase tracking-[0.2em] hover-target group">
+              <span className="mr-4">View Selected Work</span>
+              <span className="w-8 h-px bg-current group-hover:w-16 transition-all duration-300"></span>
+            </a>
           </motion.div>
+        </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+        <div className="md:col-span-5 relative mt-12 md:mt-0 md:-ml-12 lg:-ml-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:flex justify-end relative"
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-md mx-auto md:ml-0 aspect-[4/5] relative overflow-hidden group border border-black/5 dark:border-white/5"
           >
-            <div className="relative w-80 h-96 md:w-96 md:h-[30rem] rounded-2xl overflow-hidden glass-effect p-2">
-              <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-purple-600/20 backdrop-blur-sm z-10 rounded-2xl"></div>
-              {/* Placeholder for Arpit's photo */}
-              <div className="w-full h-full bg-gray-200 dark:bg-gray-800 rounded-xl flex items-center justify-center overflow-hidden">
-                 <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Code Background" className="w-full h-full object-cover opacity-60" />
-                 <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-                    <span className="text-6xl mb-4">💻</span>
-                    <span className="font-semibold text-xl text-gray-800 dark:text-white bg-white/50 dark:bg-black/50 px-4 py-2 rounded-lg backdrop-blur-md">Dev Mode On</span>
-                 </div>
-              </div>
-            </div>
-            
-            {/* Floating badges */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              className="absolute -bottom-6 -left-6 glass-effect px-6 py-4 rounded-xl flex items-center gap-4 z-30"
-            >
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-xl">4+</div>
-              <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Years of</p>
-                <p className="text-gray-900 dark:text-white font-bold">Experience</p>
-              </div>
-            </motion.div>
+            <img
+              src={profileImg}
+              alt="Arpit Kanani"
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-brand-accent/5 mix-blend-multiply dark:mix-blend-screen pointer-events-none group-hover:bg-transparent transition-colors duration-500"></div>
           </motion.div>
         </div>
       </div>
