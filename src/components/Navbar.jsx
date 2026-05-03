@@ -49,7 +49,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
             <a 
               href="/Arpit_Kanani_Resume.pdf" 
-              download 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs font-sans font-bold uppercase tracking-[0.2em] px-5 py-2.5 bg-ink text-paper dark:bg-paper dark:text-ink hover-target transition-transform hover:scale-105 border border-transparent dark:border-white/10"
             >
               Resume
@@ -101,7 +102,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               ))}
               <a
                 href="/Arpit_Kanani_Resume.pdf"
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="text-4xl font-serif text-brand-accent mt-4"
               >

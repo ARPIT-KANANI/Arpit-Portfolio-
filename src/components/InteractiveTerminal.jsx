@@ -55,12 +55,8 @@ const InteractiveTerminal = () => {
         newHistory.push({ type: 'system', text: 'Email: arpit@example.com | LinkedIn: linkedin.com/in/arpitkanani0102/' });
         break;
       case 'resume':
-        newHistory.push({ type: 'system', text: 'Downloading resume...' });
-        // In a real scenario, we would trigger a PDF download here
-        const link = document.createElement('a');
-        link.href = '#'; // Placeholder
-        link.download = 'Arpit_Kanani_Resume.pdf';
-        link.click();
+        newHistory.push({ type: 'system', text: 'Opening resume in a new tab...' });
+        window.open('/Arpit_Kanani_Resume.pdf', '_blank');
         break;
       case 'theme blue':
         document.documentElement.style.setProperty('--color-brand-accent', '#2563EB');
