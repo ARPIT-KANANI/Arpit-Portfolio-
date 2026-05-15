@@ -14,6 +14,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
   }
   
   ::selection {
@@ -40,4 +41,13 @@
   height: 1px;
   background-color: currentColor;
   opacity: 0.2;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }

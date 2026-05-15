@@ -13,7 +13,7 @@ const About = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-sm font-bold uppercase tracking-[0.2em] mb-8 text-brand-muted">The Story</h2>
+              <h2 className="text-sm font-bold uppercase tracking-[0.2em] mb-8 text-brand-muted">My Story</h2>
               
               <div className="text-3xl md:text-5xl leading-tight font-serif text-ink dark:text-ink-dark mb-12">
                 <p className="drop-cap">

@@ -60,9 +60,6 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/arpitkanani0102/" target="_blank" rel="noreferrer" className="text-sm font-bold uppercase tracking-widest hover-target hover:text-brand-accent transition-colors">
               LinkedIn
             </a>
-            <a href="#" target="_blank" rel="noreferrer" className="text-sm font-bold uppercase tracking-widest hover-target hover:text-brand-accent transition-colors">
-              Twitter
-            </a>
           </div>
 
           <div className="text-sm font-medium text-brand-muted">

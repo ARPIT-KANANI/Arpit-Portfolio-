@@ -69,7 +69,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-md mx-auto md:ml-0 aspect-[4/5] relative overflow-hidden group border border-black/5 dark:border-white/5"
+            className="w-full max-w-md mx-auto md:ml-0 aspect-[4/5] relative overflow-hidden group"
           >
             <img
               src={profileImg}

@@ -8,29 +8,19 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 import InteractiveTerminal from './components/InteractiveTerminal';
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
     <div className="min-h-screen relative w-full overflow-hidden">
       <InteractiveTerminal />
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar />
       <main className="w-full pt-20">
         <Hero />
+        <hr className="w-full border-black/5" />
         <About />
+        <hr className="w-full border-black/5" />
         <Projects />
+        <hr className="w-full border-black/5" />
         <Experience />
+        <hr className="w-full border-black/5" />
         <Skills />
       </main>
       <Footer />

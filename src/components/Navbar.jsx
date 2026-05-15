@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -55,20 +55,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             >
               Resume
             </a>
-
-            <button
-              onClick={toggleDarkMode}
-              className="hover-target p-2 transition-transform hover:scale-110"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
-            </button>
           </div>
 
           <div className="md:hidden flex items-center gap-4">
-            <button onClick={toggleDarkMode} className="hover-target" aria-label="Toggle dark mode">
-              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="hover-target focus:outline-none z-50 relative"
