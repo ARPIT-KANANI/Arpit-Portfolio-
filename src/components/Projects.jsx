@@ -79,13 +79,28 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'Portfolio Website',
+      description: 'An editorial, highly crafted personal portfolio website designed to showcase a unique technical narrative.',
+      image: '/projects/portfolio.png',
+      tags: ['React', 'Tailwind', 'Vite'],
+      liveUrl: '#',
+      githubUrl: 'https://github.com/ARPIT-KANANI/Arpit-Portfolio-',
+      alignment: 'center',
+      extendedDetails: {
+        problem: 'Standard developer portfolios look like templates. I needed a way to stand out to technical recruiters by demonstrating an eye for premium design and micro-interactions.',
+        solution: 'Designed an asymmetric, typography-driven editorial layout using Tailwind CSS. Built custom cursor interactions, scroll-based reveal animations with Framer Motion, and engineered a completely custom color token system (Paper & Ink).',
+        metrics: ['Custom Design System', 'Accessible Semantic HTML', 'Fully Responsive']
+      }
+    },
+    {
+      id: 2,
       title: 'TryConvert',
       description: 'A powerful browser-based document conversion tool to convert PDF to Word, Word to PDF, and more, all locally in your browser for maximum privacy.',
       image: '/projects/tryconvert.png',
       tags: ['React', 'PDF.js', 'Mammoth', 'Web Workers'],
       liveUrl: 'https://github.com/ARPIT-KANANI/tryconvert',
       githubUrl: 'https://github.com/ARPIT-KANANI/tryconvert',
-      alignment: 'center',
+      alignment: 'left',
       extendedDetails: {
         problem: 'Users needed a way to convert sensitive documents (like legal PDFs) into editable formats without uploading them to remote third-party servers, which poses a massive privacy risk.',
         solution: 'I architected a 100% client-side conversion engine using Web Workers to prevent UI blocking. Utilizing PDF.js for rendering and Mammoth for Word generation, the app parses and restructures documents entirely within the user\'s browser memory.',
@@ -93,33 +108,33 @@ const Projects = () => {
       }
     },
     {
-      id: 2,
+      id: 3,
+      title: 'MoveFit AI',
+      description: 'An AI-powered real-time fitness tracker that uses webcam computer vision to analyze body movements and automatically count reps.',
+      image: '/projects/movefit.png',
+      tags: ['React', 'TensorFlow.js', 'MediaPipe', 'Webcam'],
+      liveUrl: 'https://github.com/ARPIT-KANANI/movefit',
+      githubUrl: 'https://github.com/ARPIT-KANANI/movefit',
+      alignment: 'right',
+      extendedDetails: {
+        problem: 'Working out at home often means poor form and manual rep counting, which is tedious and error-prone.',
+        solution: 'Engineered a local, privacy-first computer vision pipeline using TensorFlow.js and MediaPipe Pose to track 33 body landmarks via the user\'s webcam. Built a custom algorithm in React to calculate joint angles and dynamically track rep completion states in real time.',
+        metrics: ['Real-time 60fps Pose Detection', '100% Local Inference', 'Automated Rep Counting']
+      }
+    },
+    {
+      id: 4,
       title: 'TryReel',
       description: 'A dynamic, infinite-scrolling short-form video platform featuring frictionless playback, mobile-optimized navigation, and engaging interactions.',
       image: '/projects/tryreel.png',
       tags: ['React', 'Tailwind', 'Framer Motion'],
       liveUrl: 'https://tryreel.vercel.app',
       githubUrl: 'https://github.com/ARPIT-KANANI/tryReel',
-      alignment: 'left',
+      alignment: 'center',
       extendedDetails: {
         problem: 'Building a TikTok clone on the web often results in laggy scrolling, delayed video play/pause sync, and high memory consumption due to multiple loaded video nodes.',
         solution: 'Implemented an Intersection Observer to deeply manage video playback states, ensuring only the in-view video plays. I also utilized React portals and Framer Motion to create butter-smooth transitions between the feed and user profiles.',
         metrics: ['60fps Infinite Scroll', 'Lazy-loaded Video Nodes', '98/100 Lighthouse Performance']
-      }
-    },
-    {
-      id: 3,
-      title: 'Portfolio Website',
-      description: 'An editorial, highly crafted personal portfolio website designed to showcase a unique technical narrative.',
-      image: '/projects/portfolio.png',
-      tags: ['React', 'Tailwind', 'Vite'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/ARPIT-KANANI/Arpit-Portfolio-',
-      alignment: 'right',
-      extendedDetails: {
-        problem: 'Standard developer portfolios look like templates. I needed a way to stand out to technical recruiters by demonstrating an eye for premium design and micro-interactions.',
-        solution: 'Designed an asymmetric, typography-driven editorial layout using Tailwind CSS. Built custom cursor interactions, scroll-based reveal animations with Framer Motion, and engineered a completely custom color token system (Paper & Ink).',
-        metrics: ['Custom Design System', 'Accessible Semantic HTML', 'Fully Responsive']
       }
     }
   ];
